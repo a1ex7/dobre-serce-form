@@ -1,0 +1,49 @@
+include _mixins
+
+doctype html
+html(lang="ua")
+  head
+    meta(charset='utf-8')
+
+    title Добре сердце
+    meta(name='description', content='')
+
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+
+    meta(property='og:image', content='path/to/image.jpg')
+    link(rel='icon', href='img/favicon/favicon.ico', type='image/x-icon')
+    link(rel='apple-touch-icon', sizes='180x180', href='img/favicon/apple-touch-icon-180x180.png')
+
+    // Custom Browsers Color
+    meta(name='theme-color', content='#000')
+
+    // Bundle styles
+    link(rel='stylesheet', href='css/main.min.css')
+
+  body
+
+    // =========== Inline <symbol> SVG sprite ===========
+    .visually-hidden
+      include ../img/sprites/sprite-symbol.svg
+    // ==================================================
+
+    include partials/_header
+
+
+    // MAIN
+
+    main.main-content
+      section.one
+        .wrapper
+          a(href="#paymentModal").btn.open-modal Допомогти вже зараз
+      section.two
+
+      include partials/_modal
+
+    // End MAIN
+
+    include partials/_footer
+
+    // Bundle scripts
+    script(src="js/scripts.min.js")

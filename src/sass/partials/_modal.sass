@@ -1,0 +1,392 @@
+/* Modal */
+
+.modal__overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  overflow-y: scroll
+  background-color: rgba(197, 213, 230, 0.5)
+  visibility: hidden
+  &.show
+    visibility: visible
+
+
+.modal
+  visibility: hidden
+  opacity: 0
+  transform: rotate(20deg)
+  +transition()
+  &.active
+    visibility: visible
+    opacity: 1
+    transform: rotate(0)
+
+
+.modal
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+    border: none
+    outline: none
+    padding: 5px 10px
+    width: 100%
+    height: 40px
+    border-radius: 5px
+    color: $text-color
+    font: 300 20px $font-family-base
+    background-color: rgba($four-color, 0.2)
+    +transition(background-color)
+    &:hover,
+    &:focus
+      background-color: $four-color
+
+.form-group
+  width: 100%
+  margin-bottom: 30px
+
+.form-group-1-2
+  width: calc(50% - 10px)
+
+.form-group-1-2+.form-group-1-2
+  margin-left: 20px
+
+.fieldset__legend
+  width: 100%
+  font-weight: 500
+  line-height: 18px
+  color: $third-color
+  margin-bottom: 5px
+  text-align: left
+  +sm
+    text-align: center
+
+.btn-close
+  position: absolute
+  top: -63px
+  right: 0px
+  background: none
+  border: none
+
+
+.modal
+  position: relative
+  width: 95%
+  max-width: 1340px
+  margin: 100px auto
+  +sm
+    margin: 80px auto
+  padding: 50px 63px 79px 140px // incorrect padding in maket
+  +lg
+    padding: 50px 63px 79px 63px
+  +md
+    padding: 50px
+  +xs
+    padding: 30px
+  +media(510px)
+    padding: 15px 10px 30px
+  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.2)
+  border-radius: 15px
+  background-color: $bg-color
+
+  &__title
+    color: $header-color
+    font: 700 64px/72px $heading-font-family
+    text-align: center
+    +xs
+      font: 700 48px/54px $heading-font-family
+
+  &__subtitle
+    color: $header-color
+    font: 300 18px Gilroy, Arial, sans-serif
+    text-align: center
+    margin-bottom: 20px
+
+  &__btn
+    align-self: center
+    width: 300px
+    font-size: 18px
+    font-weight: 700
+    border-radius: 10px
+    min-height: 60px
+    background-image: linear-gradient(47deg, #e53656 0%, #6082d8 100%)
+    +transition(box-shadow)
+    &:hover,
+    &:focus
+      box-shadow: 0 0 15px 5px rgba(229, 54, 86, 0.4)
+    &:active
+      box-shadow: none
+
+.payment-modal__form
+  display: flex
+  flex-direction: column
+
+
+.user
+  margin-bottom: 40px
+
+  &__data
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: space-between
+
+  &__type
+    width: 100%
+    display: flex
+    justify-content: center
+    margin-top: 13px
+    margin-bottom: 50px
+
+  &__type-group
+    display: flex
+    border-radius: 5px
+    border: 2px solid $text-color
+
+  &__type-item
+    line-height: 15px
+    color: $text-color
+    font-weight: 500
+    padding: 12px 21px 12px 21px
+    +transition()
+    &:not(.active)
+      cursor: pointer
+    &.active,
+    &:hover
+      color: $light
+      background-color: $text-color
+
+  &__data-item
+    label
+      line-height: 18px
+      font-weight: 500
+      color: $third-color
+    &--with-logo
+      position: relative
+
+  &__profile,
+  &__address
+    width: 37%
+    +lg
+      width: 43%
+    +md
+      width: 100%
+    display: flex
+    flex-wrap: wrap
+
+  &__profile
+    margin-right: 110px
+    +xs
+      margin-right: 0
+
+
+.btn__logo
+  +reset-btn
+  position: absolute
+  top: -9px
+  right: -107px
+  +size(100px)
+  border: 2px dashed transparent
+  border-radius: 5px
+  line-height: 18px
+  color: #4a90e2
+  font-weight: bold
+  cursor: pointer
+  +transition()
+  +xs
+    display: none
+  &:hover
+    color: $primary
+    background-color: rgba($four-color, 0.2)
+    border-color: $primary
+
+
+.help
+
+  &__type
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    padding: 22px
+
+  &__data
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+    border: 2px solid $four-color
+    border-radius: 15px
+    margin-bottom: 50px
+    padding: 16px 19px 0
+    +md
+      flex-wrap: wrap
+    +sm
+      justify-content: center
+
+  &__payment
+    max-width: 60%
+    +md
+      max-width: 100%
+    display: flex
+    flex-wrap: wrap
+    +sm
+      justify-content: center
+
+
+.help-type
+  .fieldset__legend
+    display: none
+
+  &__item
+    display: flex
+    flex-direction: row
+    align-items: center
+    color: $four-color
+    cursor: pointer
+    width: 25%
+    +lg
+      width: 50%
+      margin-top: 20px
+      +sm
+        width: 100%
+    & input:checked ~ .help-type__icon
+      background-color: $primary
+      border-color: $primary
+      color: $light
+      &:after
+        content: ''
+        display: block
+        position: absolute
+        bottom: -38px
+        +size(28px)
+        transform: rotate(45deg)
+        border: 2px solid $four-color
+        border-bottom: 0
+        border-right: 0
+        background-color: $bg-color
+        +sm
+          content: none
+    &:hover .help-type__icon svg
+      transform: scale(1.2)
+    &:hover .help-type__title,
+    & input:checked ~ .help-type__title
+      color: $text-color
+
+  // top elements arrow
+  &__item--top input:checked ~ .help-type__icon:after
+    +lg
+      bottom: -138px
+    +sm
+      content: none
+
+  // last elements arrow
+  &__item--last input:checked ~ .help-type__icon:after
+    +sm
+      content: ''
+
+  &__icon
+    display: flex
+    justify-content: center
+    align-items: center
+    position: relative
+    width: 80px
+    height: 80px
+    flex: none
+    border-radius: 15px
+    border: 2px solid $four-color
+    +transition()
+    svg
+      +transition(transform)
+
+  &__title
+    color: $four-color
+    font-size: 18px
+    line-height: 23px
+    font-weight: 700
+    margin-left: 20px
+    +transition(color)
+
+
+.payment
+
+  &__item input:checked ~ .payment__item-wrapper
+    background-color: $primary
+
+  &__item-wrapper
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    align-items: center
+    width: 170px
+    height: 85px
+    background-color: $four-color
+    cursor: pointer
+    +transition(background-color)
+    &:hover
+      background-color: $primary
+    &:active
+      background-color: darken($primary, 20%)
+    border-radius: 10px
+    margin-bottom: 20px
+    margin-right: 20px
+    +media(410px)
+      margin-right: 0
+    padding: 15px 15px 5px 15px
+    color: $light
+    font: 300 12px $heading-font-family
+    label
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-align: center
+
+
+.card
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  width: 375px
+  margin-bottom: 20px
+  padding: 20px 25px
+  +media(450px)
+    width: 330px
+    padding: 15px 15px
+  background-color: $four-color
+  border-radius: 15px
+  +transition(background-color)
+  &:hover,
+  &.active
+    background-color: $primary
+
+  &__item
+    &--number
+      width: 100%
+      margin-bottom: 32px
+    &--valid,
+    &--cvv
+      width: 130px
+
+  &__label
+    flex-wrap: wrap
+    display: flex
+    justify-content: space-between
+    color: $light
+    font-weight: 500
+
+  &__title
+    width: 100%
+
+  input.card__digit
+    text-align: center
+    width: 74px
+    +media(450px)
+      width: 72px
+
+
+.modal .card input
+    background-color: $five-color
+
+// Fix input masked placeholder
+.shell span
+  display: none

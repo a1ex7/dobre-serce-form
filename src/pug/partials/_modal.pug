@@ -1,0 +1,134 @@
+// Begin 'payment-modal'
+.modal__overlay.show
+  #paymentModal.payment-modal.modal.active
+    button(type="button").btn.btn-close.modal-close
+      +svg('close', 35, 34)
+    form(method="post").payment-modal__form
+      section.user
+        h2.user__title.modal__title Заповніть форму
+        .user__data
+          .user__type
+            .user__type-group
+              label.user__type-item.active
+                input(type="radio" name="user_type" checked).hidden
+                span Фіз. особа
+              label.user__type-item
+                input(type="radio" name="user_type").hidden
+                span Юр. особа
+          .user__profile
+            .user__data-item.form-group.form-group-1-2
+              label Ім’я
+                input(type="text" name="name" required)
+            .user__data-item.form-group.form-group-1-2
+              label Фамілія
+                input(type="text" name="lastname" required)
+            .user__data-item.user__data-item--with-logo.form-group
+              label Назва компаніі, організації
+                input(type="text" name="company")
+              button(type="button").btn__logo +Логотип
+            .user__data-item.form-group
+              label Email-адрес
+                input(type="email" name="email" required placeholder="myemail@gmail.com")
+            .user__data-item.form-group
+              label Номер телефону
+                input.masked(type="tel" id="phone" name="phone" minlength="9" maxlength="19" pattern="[\\+]\\d{3}\\s[\\(]\\d{2}[\\)]\\s\\d{3}[\\-]\\d{2}[\\-]\\d{2}" placeholder="+XXX (XX) XXX-XX-XX" required)
+          .user__address
+            .user__data-item.form-group
+              label Країна
+                input(type="text" name="country")
+            .user__data-item.form-group.form-group-1-2
+              label Місто
+                input(type="text" name="city")
+            .user__data-item.form-group.form-group-1-2
+              label Штат, район
+                input(type="text" name="state")
+            .user__data-item.form-group
+              label Адреса
+                input(type="text" name="address")
+            .user__data-item.form-group.form-group-1-2
+              label Поштовий індекс
+                input.masked(type="text" id="zip" name="zip" inputmode="numeric" maxlength="6" pattern="[0-9]*" placeholder="XXXXXX")
+      section.help
+        h2.help__title.modal__title Види допомоги
+        p.help__subtitle.modal__subtitle Ви можете змінити вид допомоги
+        .fieldset.help__type.help-type
+          .fieldset__legend Види допомоги
+          label.help-type__item.help-type__item--top
+            input(type="radio" name="help_type").hidden
+            .help-type__icon
+              +svg('hand', 33, 40)
+            .help-type__title Зробити
+          label.help-type__item.help-type__item--top
+            input(type="radio" name="help_type" checked).hidden
+            .help-type__icon
+              +svg('wallet', 40, 33)
+            .help-type__title Фінансова допомога
+          label.help-type__item
+            input(type="radio" name="help_type").hidden
+            .help-type__icon
+              +svg('clothes', 41, 56)
+            .help-type__title Матеріальна допомога
+          label.help-type__item.help-type__item--last
+            input(type="radio" name="help_type").hidden
+            .help-type__icon
+              +svg('heart', 39, 37)
+            .help-type__title Волонтерство
+        .help__data
+          .fieldset.help__payment.payment
+              .fieldset__legend Спосіб оплати
+
+              label.payment__item
+                input(type="radio" name="payment_method").hidden
+                .payment__item-wrapper
+                  .payment__icon
+                    +svg('visa', 110, 25)
+                  .payment__title Карта Visa/MasterCard
+
+              label.payment__item
+                input(type="radio" name="payment_method" checked).hidden
+                .payment__item-wrapper
+                  .payment__icon
+                    +svg('privat', 83, 24)
+                  .payment__title Приват24
+
+              label.payment__item
+                input(type="radio" name="payment_method").hidden
+                .payment__item-wrapper
+                  .payment__icon
+                    +svg('terminal', 22, 39)
+                  .payment__title Термінали України
+
+              label.payment__item
+                input(type="radio" name="payment_method").hidden
+                .payment__item-wrapper
+                  .payment__icon
+                    +svg('webmoney', 80, 22)
+                  .payment__title WebMoney
+
+              label.payment__item
+                input(type="radio" name="payment_method").hidden
+                .payment__item-wrapper
+                  .payment__icon
+                    +svg('paypal', 30, 31)
+                  .payment__title PayPal
+          .fieldset.help__payment-privat.privat
+              .fieldset__legend Введіть наступні данні
+              .privat__card.card.active
+                .card__item.card__item--number
+                  label.card__label
+                    .card__title Номер карти
+                    input.masked(type="text" inputmode="numeric" id="card-b1" data-next="card-b2" data-prev="" name="card-b1" maxlength="4" autocomplete="off" pattern="[0-9]*" data-charset="XXXX" placeholder="XXXX").card__digit
+                    input.masked(type="text" inputmode="numeric" id="card-b2" data-next="card-b3" data-prev="card-b1" name="card-b2" maxlength="4" autocomplete="off" pattern="[0-9]*" data-charset="XXXX" placeholder="XXXX").card__digit
+                    input.masked(type="text" inputmode="numeric" id="card-b3" data-next="card-b4" data-prev="card-b2" name="card-b3" maxlength="4" autocomplete="off" pattern="[0-9]*" data-charset="XXXX" placeholder="XXXX").card__digit
+                    input.masked(type="text" inputmode="numeric" id="card-b4" data-next="" data-prev="card-b3" name="card-b4" maxlength="4" autocomplete="off" pattern="[0-9]*" data-charset="XXXX" placeholder="XXXX").card__digit
+                .card__item.card__item--valid
+                  label.card__label
+                    .card__title Термін дії
+                    input.masked(type="text" inputmode="numeric" id="card_validity" name="card_validity" autocomplete="off" placeholder="ММ/ГГ" pattern="(1[0-2]|0[1-9])\\/(1[5-9]|2[0-9])" data-charset="XX/XX")
+                .card__item.card__item--cvv
+                  label.card__label
+                    .card__title CVC/CVV
+                    input.masked(type="password" inputmode="numeric" autocomplete="off" maxlength="3" id="card_cvv" name="card_cvv" pattern="[0-9]*" placeholder="XXX")
+      button.btn(type="submit").modal__btn.js-modal-submit Допомогти
+
+// End 'payment-modal'
